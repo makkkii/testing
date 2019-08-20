@@ -1,0 +1,24 @@
+{% extends 'core/base_error.html' %}
+{% load static %}
+
+{% block contents %}
+    <div class="content-i" style="background-color: #fff !important;">
+        <div class="content-box">
+            <div class="container-fluid">
+                <div class="big-error-w" style="width: 100%;">
+                    <img src="{% static 'img/error_image.jpg' %}" class="img-fluid" alt="500 error" style="max-width: 20% !important;">
+                    <h1>500 Error...</h1>
+                    <h5>Page not Found</h5>
+                    <h4>
+                        Oops, Something went missing...
+                        {% if request.user.is_authenticated %}
+                            <a href="{% url 'core:dashboard' %}">Return Home</a>
+                        {% else %}
+                            <a href="{% url 'core:index' %}">Return Home</a>
+                        {% endif %}
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

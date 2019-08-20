@@ -1,0 +1,224 @@
+{% load static %}
+
+<!--------------------
+START - Mobile Menu
+-------------------->
+
+
+<div class="menu-mobile menu-activated-on-click color-scheme-dark">
+    <div class="mm-logo-buttons-w">
+        <a class="mm-logo" href="{% url 'core:index' %}">
+            <img src="{% static 'img/SavvyBiz-logo-Icon.png' %}"><span></span>
+        </a>
+        <div class="mm-buttons">
+            <div class="content-panel-open">
+                <div class="os-icon os-icon-grid-circles"></div>
+            </div>
+            <div class="mobile-menu-trigger">
+                <div class="os-icon os-icon-hamburger-menu-1"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="menu-and-user">
+        <div class="logged-user-w">
+            <div class="avatar-w">
+                <img alt="" src="{% static 'img/avatar1.jpg' %}">
+            </div>
+            <div class="logged-user-info-w">
+                {% if request.user.is_authenticated %}
+                    <div class="logged-user-name">{{ request.user.fullname }}</div>
+                    <div class="logged-user-role">
+                        {% if request.user.is_superuser %}
+                            SB Administrator
+                        {% elif request.user.is_staff %}
+                            SB Staff
+                        {% elif request.user.is_manager %}
+                            PM Administrator
+                        {% else %}
+                            Member
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <div class="logged-user-name">{{ request.user.fullname|default:"Annonymous" }}</div>
+                    <div class="logged-user-role">{{ request.user.username|default:"Limit Account" }}</div>
+                {% endif %}
+            </div>
+        </div>
+
+
+
+        <!--------------------
+        START - Mobile Menu List
+        -------------------->
+        {% if request.user.is_authenticated %}
+            <ul class="main-menu">
+                <li class="sub-menu">
+                    <a href="{% url 'core:dashboard' %}">
+                        <div class="icon-w"><div class="fas fa-home"></div></div>
+                        <span>Home - Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="has-sub-menu">
+                    <a href="javascript:;">
+                        <div class="icon-w"><i class="fas fa-history"></i></div>
+                        <span>Record Manager</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{% url 'record:index' %}">Find/Edit</a></li>
+                        <li><a href="{% url 'record:record-add' %}">Add</a></li>
+                        <li><a href="{% url 'record:record-list' %}">Reports</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-sub-menu">
+                    <a href="{% url 'timer:index' %}">
+                        <div class="icon-w"><i class="fas fa-alarm-clock"></i></div>
+                        <span>Time Manager</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="#">My Calendar</a></li>
+                        <li><a href="#">My Calendar</a></li>
+                    </ul>
+                </li>
+
+                <li class="has-sub-menu">
+                    <a href="javascript:;">
+                        <div class="icon-w"><i class="fas fa-address-card"></i></div>
+                        <span>Contact Manager</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{% url 'contact:list' %}">Contacts</a></li>
+                        <li><a href="{% url 'core:unit-list' %}">Unit</a></li>
+                        <li><a href="{% url 'core:building-list' %}">Building</a></li>
+                        <li><a href="{% url 'core:portfolio-list' %}">Portfolio</a></li>
+                        <li><a href="{% url 'core:owner-group-list' %}">Owner Group</a></li>
+                        <li><a href="{% url 'core:company-list' %}">Company</a></li>
+                        <li><a href="{% url 'core:building-utility-list' %}">Utility</a></li>
+                        <li><a href="{% url 'contact:service-type-list' %}">Service Type</a></li>
+{#                        <li><a href="{% url 'contact:phone-type-list' %}">Phone Type</a></li>#}
+                        <li><a href="{% url 'core:unit-appliance-type-list' %}">Appliance Type</a></li>
+{#                        <li><a href="{% url 'core:program-list' %}">Program</a></li>#}
+                    </ul>
+                </li>
+
+                <li class="sub-header">
+                    <span>Options</span>
+                </li>
+
+
+                <li class="has-sub-menu">
+{#                    <a href="{% url 'comm:index' %}">#}
+                    <a href="{% url 'comm:inbox-messages' %}">
+                        <div class="icon-w"><i class="fas fa-comment-smile"></i></div>
+                        <span>Communication Manager</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{% url 'comm:inbox-messages' %}">Communication</a></li>
+                    </ul>
+                </li>
+                <li class="has-sub-menu">
+                        <div class="icon-w"><i class="fas fa-book"></i></div>
+                        <span>Process Manager</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Manage TaskLists</a></li>
+                        <li><a href="#">Manage Templates</a></li>
+                    </ul>
+                </li>
+                <li class="has-sub-menu">
+                    <a href="{% url 'success:index' %}">
+                        <div class="icon-w"><i class="fas fa-chart-bar"></i></div>
+                        <span>Success Manager</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Success</a></li>
+                    </ul>
+                </li>
+                <li class="has-sub-menu">
+                    <a href="{% url 'lease:index' %}">
+                        <div class="icon-w"><i class="fas fa-key"></i></div>
+                        <span>Lead Manager</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{% url 'lease:index' %}">Lead</a></li>
+                    </ul>
+                </li>
+                <li class="has-sub-menu">
+                    <a href="{% url 'team:index' %}">
+                        <div class="icon-w"><i class="fas fa-heart"></i></div>
+                        <span>Team Manager</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Team</a></li>
+                    </ul>
+                </li>
+                <li class="has-sub-menu">
+                    <a href="{% url 'accounting:index' %}">
+                        <div class="icon-w"><i class="fas fa-dollar-sign"></i></div>
+                        <span>Accounting Manager</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Accounting</a></li>
+                    </ul>
+                </li>
+                <li class="has-sub-menu">
+                    <a href="{% url 'maintenance:index' %}">
+                        <div class="icon-w"><i class="fas fa-wrench"></i></div>
+                        <span>Maintenance Manager</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="#">Maintenance</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        {% endif %}
+        <!--------------------
+        END - Mobile Menu List
+        -------------------->
+        <div class="mobile-menu-magic">
+            <h4>SavvyBiz</h4>
+            <p>You are better served on the Mobile App</p>
+            <div class="btn-w">
+                <a class="btn btn-white btn-rounded" href="javascript:;" target="_blank">Download Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------
+END - Mobile Menu
+-------------------->
+
+<!--------------------
+START - Main Menu
+-------------------->
+<div class="menu-w color-scheme-dark color-style-bright menu-position-side menu-side-left menu-layout-compact sub-menu-style-over sub-menu-color-bright selected-menu-color-light menu-activated-on-hover menu-has-selected-link" style="min-height: 100vh;">
+    <div class="logo-w_">
+        <a class="logo" href="{% url 'core:index' %}">
+            <img src="{% static 'img/SavvyBiz-logo.png' %}"><span></span>
+            <div class="logo-label"></div>
+        </a>
+    </div>
+
+    <h1 class="menu-page-header">Page Header</h1>
+
+    {% if request.user.is_authenticated %}
+        <ul class="main-menu">
+            <li class="sub-header"><span>On Progress</span></li>
+
+            <li class="sub-menu">
+                <a href="{% url 'core:dashboard' %}">
+                    <div class="icon-w"><i class="fas fa-home"></i></div>
+                    <span>Home</span>
+                </a>
+            </li>
+        </ul>
+    {% endif %}
+
+</div>
+<!--------------------
+END - Main Menu
+-------------------->

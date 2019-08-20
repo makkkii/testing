@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+
+{% load static bootstrap4 %}
+
+{% block contents %}
+
+    <div class="content-box">
+        <div class="element-wrapper">
+            <div class="element-box col">
+                <h5 class="form-header">
+                {% if company_form %}
+                    {% if company_form.instance.created %}
+                        <i class="fal fa-pencil-alt"></i> Edit Company
+                    {% else %}
+                        <i class="fal fa-layer-plus"></i> New Company
+                    {% endif %}
+                {% elif instance.created %}
+                    <i class="fa fa-id-card-o"></i> View Companies
+                {% endif %}
+
+                <small>
+                    <a href="{% url 'core:company-list' %}" title="View Companies" data-toggle='tooltip' class="float-right"><i class="fal fa-list"></i> Companies</a>
+                </small>
+                </h5>
+                <div class="form-desc"></div>
+
+                <div class="row justify-content-md-center">
+                    <div class="col-12 col-sm-11">
+                        {% if company_form %}
+                            {% include 'core/company-form.html' %}
+                        {% elif instance.created %}
+                            {% include 'core/company-detail.html' %}
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+             $("#top-save-button").click(function () {
+                 $("#company-form").submit()
+             });
+        });
+    </script>
+{% endblock %}
+

@@ -1,0 +1,100 @@
+{% load bootstrap4 static tz i18n %}
+{% block contents %}
+    <style>
+        .alert.alert-danger.alert-dismissable.alert-link{
+            display: none;
+        }
+    </style>
+    <div class="content-box">
+        <form method="POST" id="company-form" novalidate>
+            {% csrf_token %}
+            <div class="row">
+                {% bootstrap_form company_form form_group_class="form-group col-12 col-sm-6" %}
+            </div>
+
+            {{ address_formset.management_form }}
+
+            <div class="row" data-form-list="{{ address_formset.prefix }}-prefix">
+                {% for address_form in address_formset %}
+                    <div id="{{ address_form.prefix }}-row" class="dynamic-form row mt-2 form-buttons-w">
+                        <div class="col-12">
+                            <span class="d-none">
+                                {{ address_form.DELETE }}
+                                {% if address_form.instance %}{{ address_form.id }}{% endif %}
+                            </span>
+                            <a id="remove-{{ address_form.prefix }}-row" href="javascript:void(0)" data-prefix="{{ address_formset.prefix }}" title="Remove Current {{ address_form.type.label }}" class="delete-row float-right mx-1 {% if forloop.first %}d-none{% endif %}">
+                                <i class="os-icon os-icon-cancel-circle text-danger"></i>
+                            </a>
+
+                            <a class="float-right add-row {% if not forloop.first %}d-none{% endif %}" data-prefix="{{ address_formset.prefix }}" title="Add New {{ address_form.type.label }}">
+                                <i class="os-icon os-icon-coins-4 mx-1 text-primary"></i>
+                            </a>
+                        </div>
+
+                        {% bootstrap_form address_form exclude="DELETE" form_group_class="form-group col-12 col-sm-6" %}
+                    </div>
+                {% endfor %}
+
+                <button class="btn btn-primary float-right"><i class="far fa-check-double"></i> Submit Form</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+<script src="{% static 'js/dynamic-formset.js' %}"></script>
+<link href="{% static 'select2/dist/css/select2.min.css' %}" rel="stylesheet">
+<script src="{% static 'select2/dist/js/select2.full.min.js' %}"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".select2").select2()
+        {% if request.is_ajax %}
+            $("#company-form input[type='submit']").click(function (ev) {
+                ev.preventDefault();
+                var selector = "#id_company";
+                {% if form.instance.created %}
+                    var url = "{% url 'core:company-edit' form.instance.pk %}";
+                {% else %}
+                    var url = "{% url 'core:company-add' %}";
+                {% endif %}
+
+                processFeed(url, $("#company-form").serialize(), "Processing your request...", "POST", function (d) {
+                    if (d.type == "success") {
+                        BootstrapDialog.show({
+                            message: d.msg,
+                            onhide: function (bdialog) {
+                                if (typeof bdialog !== null && typeof bdialog !== "undefined") {
+                                    bdialog.close();
+                                }
+                            }
+                        });
+                    } else {
+                        renderError($("#company-form"), d.data)
+                        pwd(d.msg, false, true)
+                    }
+                }, function (d) {
+                    BootstrapDialog.show({message: d.responseText});
+                });
+            });
+
+        {% endif %}
+    });
+
+    function before_clone(){
+        {% if not is_mobile %}
+            $("select[data-type='select2']").select2("destroy");
+            $("select[data-type='select2'],select[data-type='select2'] option").removeAttr("data-select2-id");
+        {% endif %}
+    }
+
+    function after_clone(){
+        {% if not is_mobile %}
+            $.each($("select[data-type='select2']"), function (i, v) {
+                $(v).select2().data('select2').listeners['*'].push(function(name, target) {
+                    if(name == 'focus') {$(this.$element).select2("open");}
+                });
+            });
+        {% endif %}
+    }
+
+</script>

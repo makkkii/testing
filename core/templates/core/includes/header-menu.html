@@ -1,0 +1,203 @@
+{% load static %}
+
+<!--------------------
+START - Top Bar
+-------------------->
+<div class="top-bar color-scheme-bright">
+    <div class="top-icon top-settings " id="top-settings">
+        <i class="far fa-align-justify"></i>
+{#        {{ request.user.fullname }}:::{{ request.user.first_name }}:::{{ request.user.last_name }}:::{{ request.user.email }}#}
+
+    </div>
+    {% if request.user.is_staff %}
+        <div class="top-icon top-id">
+        {% if request.user.company.pk %}
+            <a href="javascript:;" title="Change Company" data-target="#emulateCompany" data-toggle="modal">For {{ request.user.company }}</a>
+            <a href="{% url 'core:update-assumed-company' 'aaaa0000-bb11-cc22-dd33-eeeeee555555' %}?url={{ request.get_full_path }}" title="Stop working as {{ request.user.company }}" data-toggle="tooltip" style="color: red"><i class="far fa-stop-circle"></i></a>
+        {% else %}
+            <a href="javascript:;" data-target="#emulateCompany" data-toggle="modal"><i class="fal fa-folders"></i></a>
+        {% endif %}
+        </div>
+
+{#        <div class="top-icon top-id">#}
+{#            <select name="assumed_company" id="id_assumed_company" class="select2">#}
+{#                {% for c in request.user.companies %}#}
+{#                    <option value="{{ c.0 }}" {% if c.0 == request.user.company.pk %}selected{% endif %}>{{ c.1 }}</option>#}
+{#                {% endfor %}#}
+{#            </select>#}
+{#        </div>#}
+    {% endif %}
+
+    {% block drop_top_nav %}
+    {% endblock %}
+
+    <!--------------------
+    START - Top Menu Controls
+    -------------------->
+
+    <div class="top-menu-controls">
+{#        <div class="element-search autosuggest-search-activator">#}
+{#            <input placeholder="Start typing to search..." type="text">#}
+{#        </div>#}
+
+        {% if request.user.is_authenticated %}
+            <!-------------------
+             START - Settings Link in secondary top menu
+            -------------------->
+            <div class="top-icon top-settings os-dropdown-trigger os-dropdown-position-left">
+                <a href="{% url 'comm:follow-up-incoming' %}" class="text-white" title="New Incoming Communication" data-toggle="tooltip" data-placement="left"><i class="fas fa-comment-alt-plus"></i></a>
+            </div>
+{#            <div class="top-icon top-settings os-dropdown-trigger os-dropdown-position-left">#}
+{#                <i class="fas fa-question-circle"></i>#}
+{#                <div class="os-dropdown">#}
+{#                    <div class="icon-w"><i class="fas fa-question-circle"></i></div>#}
+{#                    <ul>#}
+{#                        <li><a href="#"><i class="far fa-life-ring"></i><span>FAQ</span></a></li>#}
+{#                        <li><a href="#"><i class="far fa-phone"></i><span>Contact Manager</span></a></li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </div>#}
+            <div class="top-icon top-settings os-dropdown-trigger os-dropdown-position-left">
+                <i class="far fa-alarm-clock"></i>
+                <div class="os-dropdown">
+                    <div class="icon-w"><i class="far fa-alarm-clock"></i></div>
+                    <ul><li><a href="#"><i class="far fa-stopwatch"></i><span>Set Time</span></a></li></ul>
+                </div>
+            </div>
+
+            <div class="top-icon top-settings os-dropdown-trigger os-dropdown-position-left">
+                <i class="far fa-cog"></i>
+                <div class="os-dropdown">
+                    <div class="icon-w"><i class="far fa-cog"></i></div>
+                    <ul>
+                        {% if request.user.is_staff or request.user.is_superuser or request.user.is_manager %}
+                            <li style="border-bottom: 1px solid rgba(255, 255, 255, 1);"><b>Add/Edit:</b></li>
+                            <li><a href="{% url 'core:profile-list' %}">Users</a></li>
+                            {% if request.user.is_staff or request.user.is_superuser %}
+                                <li><a href="{% url 'core:company-list' %}">PM Company</a></li>
+                            {% else %}
+                                 <li><a href="{% url 'core:company-detail' request.user.company.pk %}">My Company</a></li>
+                            {% endif %}
+                            <li><a href="{% url 'core:department-list' %}">Department</a></li>
+                            <li><a href="{% url 'core:portfolio-list' %}">Portfolio</a></li>
+{#                            <li><a href="{% url 'core:owner-group-list' %}">Owner</a></li>#}
+                            <li><a href="{% url 'core:building-list' %}">Building</a></li>
+                            <li><a href="{% url 'core:unit-list' %}">Unit</a></li>
+                            <li><a href="{% url 'contact:contract-list' %}">Transaction</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <!--------------------
+            END - Settings Link in secondary top menu
+            -------------------->
+            <!--------------------
+            START - User avatar and menu in secondary top menu
+            -------------------->
+            <div class="logged-user-w">
+                <div class="logged-user-i">
+                    <div class="avatar-w"><img alt="" src="{{ request.user.profile_pic_url }}" id="profile-picture-id" onerror="this.src='{% static 'img/default-profile-icon.png' %}'"></div>
+                    <div class="logged-user-menu color-style-bright">
+                        <div class="logged-user-avatar-info">
+                            <div class="avatar-w">
+                                {% if request.user.user_profile %}
+                                    <a href="{% url 'core:profile-detail' request.user.user_profile.pk %}">
+                                        <img alt="" src="{{ request.user.profile_pic_url }}">
+                                    </a>
+                                {% else %}
+                                    <img alt="" src="{{ request.user.profile_pic_url }}">
+                                {% endif %}
+                            </div>
+                            <div class="logged-user-info-w">
+                                <div class="logged-user-name">
+                                    {% if request.user.user_profile %}
+                                        <a href="{% url 'core:profile-detail' request.user.user_profile.pk %}" class="text-white">{{ request.user.first_name|default:request.user.email|truncatechars_html:16 }}</a>
+                                    {% else %}
+                                        {{ request.user.first_name|default:request.user.email|truncatechars_html:16 }}
+                                    {% endif %}
+                                </div>
+                                <div class="logged-user-role">
+                                    {% if request.user.is_superuser %}
+                                        ***SavvyBiz Admin
+                                    {% elif request.user.is_staff %}
+                                        SavvyBiz Admin
+                                    {% elif False %}
+                                        PM Admin
+                                    {% else %}
+                                        {{ request.user.first_name|default:request.user.email|truncatechars_html:16 }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-icon">
+                            <i class="os-icon os-icon-wallet-loaded"></i>
+                        </div>
+                        <ul>
+                            <li><a href="apps_email.html"><i class="far fa-envelope"></i><span>Assigned Tickets</span></a></li>
+                            {% if request.user.is_staff %}<li><a href="/access/" target="_blank"><i class="far fa-envelope"></i><span>Backend</span></a></li>{% endif %}
+                            <li><a href="{% if request.user.user_profile %}{% url 'core:profile-detail' request.user.user_profile.pk %}{% else %}javascript:;{% endif %}"><i class="far fa-user-circle"></i><span>Profile Details</span></a></li>
+                            <li><a href="users_profile_small.html"><i class="os-icon os-icon-coins-4"></i><span>Billing Details</span></a></li>
+                            <li><a href="#"><i class="os-icon os-icon-others-43"></i><span>Notifications</span></a></li>
+                            <li><a href="{% url 'account:logout' %}"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--------------------
+            END - User avatar and menu in secondary top menu
+            -------------------->
+        {% else %}
+            <!--------------------
+            START - User avatar and menu in secondary top menu
+            -------------------->
+            <div class="logged-user-w">
+                <div class="logged-user-i">
+                    <div class="avatar-w">
+                        <img alt="" src="{% static 'img/anonnymous_icon.png' %}">
+                    </div>
+                    <div class="logged-user-menu color-style-bright">
+                        <div class="logged-user-avatar-info">
+                            <div class="avatar-w">
+                                <img alt="" src="{% static 'img/anonnymous_icon.png' %}">
+                            </div>
+                            <div class="logged-user-info-w">
+                                <div class="logged-user-name">Anonnymous</div>
+                                <div class="logged-user-role">Anonnymous</div>
+                            </div>
+                        </div>
+                        <div class="bg-icon"><i class="os-icon os-icon-wallet-loaded"></i></div>
+                        <ul>
+                            <li>
+                                <a href="{% url 'account:login' %}"><i class="far fa-sign-in-alt"></i><span>Login</span></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'account:sign-up' %}"><i class="far fa-sign-out-alt"></i><span>Sign up</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--------------------
+            END - User avatar and menu in secondary top menu
+            -------------------->
+        {% endif %}
+    </div>
+    <!--------------------
+    END - Top Menu Controls
+    -------------------->
+</div>
+<!--------------------
+END - Top Bar
+-------------------->
+
+<script>
+    $(function () {
+        {#var image=document.getElementById("profile-picture-id").value;#}
+        {#if(image==null || image==''){#}
+            {#document.getElementById('profile-picture-id').setAttribute('src', "/static/img/default-profile-icon.png");#}
+        {# }#}
+        {#$("#profile-picture-id").each(function(i, v){#}
+        {#    $(v).attr("onerror","this.src='/static/img/default-profile-icon.png'");#}
+        {# });#}
+    });
+</script>

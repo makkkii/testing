@@ -1,0 +1,68 @@
+{% load static tz %}
+
+<div class="row">
+    <div class="element-wrapper">
+        <div class="element-box"><h6 class="element-header">{{ instance.name }}</h6>
+            <div class="timed-activities compact">
+                <div class="timed-activity">
+                    <div class="ta-date"><span>{{ instance.phone }} / {{ instance.email }}</span></div>
+                    <div class="ta-record-w">
+                        <div class="ta-record">
+                            <div class="ta-timestamp"><strong>Website</strong></div>
+                            <div class="ta-activity">{{ instance.website|default:"" }}</div>
+                        </div>
+                        <div class="ta-record">
+                            <div class="ta-timestamp"><strong>Facebook</strong></div>
+                            <div class="ta-activity">{{ instance.facebook|default:"" }}</div>
+                        </div>
+                        <div class="ta-record">
+                            <div class="ta-timestamp"><strong>Twitter</strong></div>
+                            <div class="ta-activity">{{ instance.twitter|default:"" }}</div>
+                        </div>
+                        <div class="ta-record">
+                            <div class="ta-timestamp"><strong>Linkedin</strong></div>
+                            <div class="ta-activity">{{ instance.linkedin|default:"" }}</div>
+                        </div>
+                        <div class="ta-record">
+                            <div class="ta-timestamp"><strong>Instagram</strong></div>
+                            <div class="ta-activity">{{ instance.instagram|default:"" }}</div>
+                        </div>
+                        <div class="ta-record">
+                            <div class="ta-timestamp"><strong>Youtube</strong></div>
+                            <div class="ta-activity">{{ instance.youtube|default:"" }}</div>
+                        </div>
+                        <div class="ta-record">
+                            <div class="ta-timestamp"><strong>Timezone</strong></div>
+                            <div class="ta-activity">{{ instance.timezone|default:"" }}</div>
+                        </div>
+                        <div class="ta-record">
+                            <div class="ta-timestamp"><strong>Status</strong></div>
+                            <div class="ta-activity">{{ instance.status|default:"" }}</div>
+                        </div>
+                        <div class="ta-record">
+                            <div class="ta-timestamp"><strong>Website</strong></div>
+                            <div class="ta-activity">{{ instance.website|default:"" }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="element-wrapper">
+        <div class="element-box"><h6 class="element-header">{{ instance.name }} Addresses</h6>
+            <div class="timed-activities compact">
+                {% for add in instance.addresses.all %}
+                    <div class="timed-activity">
+                        <div class="ta-date"><span class="{% if add.default %}text-success{% endif %}">{{ add.line_1 }} ({{ add.type }})</span></div>
+                        <div class="ta-record-w">
+                            <div class="ta-record">
+                                <div class="ta-timestamp"><strong>{{ add.line_1 }} {{ add.line_2|default:'' }} <br>{{ add.city }} {{ add.zip }} {{ add.state }}<br>{{ add.country }} </strong></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

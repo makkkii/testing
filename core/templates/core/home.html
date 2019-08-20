@@ -1,0 +1,1050 @@
+{% load static %}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>SavvyBiz</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+{#    <link href="http://fonts.gstatic.com/s/roboto/v18/" ref="stylesheet">#}
+    <link rel="stylesheet" href="{% static 'home/assets/css/home.css' %}">
+    <script src="{% static 'home/assets/js/modernizr.js' %}"></script>
+    <script src="{% static 'home/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'home/assets/js/TweenMax.min.js' %}"></script>
+    <script src="{% static 'home/assets/js/ScrollMagic.min.js' %}"></script>
+    <script src="{% static 'home/assets/js/animation.gsap.min.js' %}"></script>
+    <script src="{% static 'home/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'home/assets/js/pixi.min.js' %}"></script>
+{#    <link href="{% static 'fonts/fontawesome5/css/all.min.css' %}" rel="stylesheet">#}
+
+</head>
+<body><!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="page-wrap">
+    <div class="landing"><!-- HEADER -->
+        <div id="header">
+            <div class="container">
+                <div class="row">
+{#                    <div class="col-xs-2 col-md-1 pull-right nav-container pt-0">#}
+{#                        <div class="circle">#}
+{#                            <div class="burger-nav"></div>#}
+{#                            <div class="nav">#}
+{#                                <ul>#}
+{#                                    <li><a href="#">Home</a></li>#}
+{#                                    <li><a href="#">Benefits</a></li>#}
+{#                                    <li><a href="#">How It Works?</a></li>#}
+{#                                    <li><a href="#">Pricing</a></li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+                    <div class="col-xs-12 col-sm-6 col-md-6" style="height: 80px;">
+                        <span class="logo"><a href="{% url 'core:index' %}"><img src="{% static 'home/assets/images/landing_logooo.png' %}"></a></span>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 landing-top-button_">
+                        <div class="button-orange pull-right">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfmdLzjflLp5Rm0mDXCqQL8M9aPWCaFDfXZWOzH354yjEphjw/viewform" target="_blank">Sign Me Up</a>
+                            <a href="{% url 'login' %}">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="ng-scope">
+            <div id="topAnimationsWrapper" class="centered">
+                <div id="roadContainer" class="centered">
+                    <p id="topTitle">Bringing Power and Savvy to Your Business</p>
+
+                    <div class="roadicons iconShoe imgHolder"><img class="svg whiteSVG" src="{% static 'home/assets/images/topIcons/Leads.svg' %}"></div>
+                    <div class="roadicons iconShoe textHolder" style="top: 340px;opacity: 1;"><p id="miles" class="iconText">Leads</p></div>
+
+                    <div class="roadicons iconSun imgHolder"><img class="svg whiteSVG sun" src="{% static 'home/assets/images/topIcons/SecurityDeposit.svg' %}"></div>
+                    <div class="roadicons iconSun textHolder" style="top: 130px;opacity: 1;"><p id="sunny" class="iconText">Security Deposits</p></div>
+
+                    <div class="roadicons iconBiker imgHolder"><img class="svg whiteSVG" src="{% static 'home/assets/images/topIcons/call.svg' %}"></div>
+                    <div class="roadicons iconBiker textHolder" style="top: 330px;opacity: 1;"><p id="power" class="iconText">Phone Calls</p></div>
+
+                    <div class="roadicons iconHeartbeat imgHolder"><img class="svg whiteSVG" src="{% static 'home/assets/images/topIcons/Email.svg' %}"></div>
+                    <div class="roadicons iconHeartbeat textHolder" style="top: 160px;opacity: 1;"><p id="bpm" class="iconText">Email</p></div>
+
+                    <div class="roadicons iconRun imgHolder"><img class="svg whiteSVG" src="{% static 'home/assets/images/topIcons/team.svg' %}"></div>
+                    <div class="roadicons iconRun textHolder" style="top: 144px;opacity: 1;"><p id="pace" class="iconText">Team</p></div>
+
+                    <div class="roadicons iconWaves imgHolder"><img class="svg whiteSVG" src="{% static 'home/assets/images/topIcons/MoveOuts.svg' %}"></div>
+                    <div class="roadicons iconWaves textHolder" style="top: 285px;opacity: 1;"><p id="grade" class="iconText" style="top: 130px;">Move Outs</p></div>
+
+                    <div class="roadicons iconPeaks imgHolder"><img class="svg whiteSVG" src="{% static 'home/assets/images/topIcons/Tasks.svg' %}"></div>
+                    <div class="roadicons iconPeaks textHolder" style="top: 60px;opacity: 1;"><p id="elevation" class="iconText">Tasks</p></div>
+
+                    <div class="roadicons iconSpeedometer imgHolder"><img class="svg whiteSVG" src="{% static 'home/assets/images/topIcons/LeaseRenewals.svg' %}"></div>
+                    <div class="roadicons iconSpeedometer textHolder" style="top: 290px;opacity: 1;"><p id="mph" class="iconText" style="top: 140px;">Lease Renewals</p></div>
+                </div>
+
+                <div id="slideHeader"></div>
+                <div id=roadContainer2 class=centered>
+                    <div class="roadiconsDark iconShoe imgHolder"><img class="svg darkSVG" src="{% static 'home/assets/images/topIcons/Leadssm.svg' %}"></div>
+                    <div class="roadiconsDark iconSun imgHolder"><img class="svg darkSVG sun" src="{% static 'home/assets/images/topIcons/SecurityDepositsm.svg' %}"></div>
+                    <div class="roadiconsDark iconBiker imgHolder"><img class="svg darkSVG" src="{% static 'home/assets/images/topIcons/call1.svg' %}"></div>
+                    <div class="roadiconsDark iconHeartbeat imgHolder"><img class="svg darkSVG" src="{% static 'home/assets/images/topIcons/Emailsm.svg' %}"></div>
+                    <div class="roadiconsDark iconRun imgHolder"><img class="svg darkSVG" src="{% static 'home/assets/images/topIcons/Teamsm.svg' %}"></div>
+                    <div class="roadiconsDark iconWaves imgHolder"><img class="svg darkSVG" src="{% static 'home/assets/images/topIcons/MoveOutssm.svg' %}"></div>
+                    <div class="roadiconsDark iconPeaks imgHolder"><img class="svg darkSVG" src="{% static 'home/assets/images/topIcons/Taskssm.svg' %}"></div>
+                    <div class="roadiconsDark iconSpeedometer imgHolder"><img class="svg darkSVG" src="{% static 'home/assets/images/topIcons/LeaseRenewalssm.svg' %}"></div>
+                </div>
+
+                <h1 id="funnelTitle" class="centered">MANAGING COMMUNICATIONS AND TASKS EFFICIENTLY</h1>
+                <div class="funnel centered" id="funnelTop"></div>
+                <div class="funnel centered" id="funnelBase">
+                    <p class="funnelText funnelText-success" id="historical">Success Manager</p>
+                    <p class="funnelText funnelText-communication" id="Meta">Communication Manager</p>
+                    <p class="funnelText funnelText-processs" id="insights">Process Manager</p>
+                    <p class="funnelText funnelText-team" id="analysis_">Team Manager</p>
+                    <p class="funnelText funnelText-lead" id="analysis__">Lead Manager</p>
+                </div>
+                <div id="MazeWrapper" class="centered">
+                    <div id="sizeWrapMaze" class="centered"><img class="svg mazeSVG" src="{% static 'home/assets/images/maze1.svg' %}"></div>
+                </div>
+            </div>
+
+            <!-- EVENT FORECAST -->
+            <div id="event-forecast">
+                <div class="container"><h1>Business Metrics</h1>
+                    <p class="label">At A Glance</p>
+                    <div class="row circles">
+                        <div class="col-md-4">
+                            <div class="red-circle"><span>0%</span></div>
+                            <div class="clabel">Team Member Performance</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="blue-circle"><span>0%</span></div>
+                            <div class="clabel">Task Completion</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="green-circle"><span>0%</span></div>
+                            <div class="clabel">Business Performance</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FEATURES -->
+            <div id="features"><h1>Why SavvyBiz?</h1>
+                <div class="container">
+                    <div class="row data">
+                        <div class="col-xs-12 col-sm-6">
+                            <h2>Track Communications and Tasks in One Location</h2>
+                            <p>With SavvyBiz, you can now keep records of all incoming emails, texts, and phone calls in
+                                one location, setting follow up tasks to be sure nothing falls through the cracks. Lomg
+                                gone are the days of running around like a chicken with your head cut off, or combing
+                                through hundreds of emails to try and find that "one email" from an owner or tenant a
+                                year ago. With our Communication Manager, all of your communications will be filed away,
+                                and easy to retrieve, at a moments notice.
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div id="videoBox" class="box">
+                                <video width="400" controls>
+                                  <source src="{% static 'vidoes/that would be awesome.mp4' %}" type="video/mp4">
+                                  Your browser does not support HTML5 video.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row analyze">
+                        <div>
+                            <style>
+                                @media only screen and (max-width: 768px) {
+                                    .rotateimg {display: none;}
+                                    .rotateimg1 {display: none;}
+                                }
+                            </style>
+                            <div class="col-xs-12 col-md-6">
+                                <img class="rotateimg" src="{% static 'home/assets/images/paralax/graph.png' %}" style="float:left;">
+                            </div>
+                            <img class="rotateimg1" src="{% static 'home/assets/images/paralax/graph2.png' %}" style="position:absolute;left:68px; width:194px; top:65px;">
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <h2>Manage Time, Tasks, and Teams Efficiently</h2>
+                            <p>We are here to help you breathe, and keep your team organized, efficient, and successful.
+                                Just onboarding a single property can lead to dozens of different tasks that need to be
+                                completed. With SavvyBiz, you tailor your virtual task management system once, the way
+                                YOU do things, and we will set those tasks each time moving forward. Not only does this
+                                help when training a new team member, but brings the consistency you have been hoping
+                                for in your office.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row achieve">
+                        <div class="achieve-icons"></div>
+                        <div class="col-xs-12 col-md-4">
+                            <h2>Analyze and Achieve</h2>
+                            <p class="big-screen-width">Now you have all of your data in one place, which makes managing
+                                the day to day operations a cinch. With SavvyBiz, one of the greatest benefits is being
+                                able to get a birdseye overview of the overall health of your company. How are your team
+                                members performing? How many move ins are being completed on time? How often are you
+                                able to return a call when expected? How many new leads come into your office each
+                                month? What percentage of leads is your business development team closing? As a business
+                                owner, growth and scalability depend on you having hard data to make your next business
+                                move. Before, you were guessing, and now, with SavvyBiz, you can make an educated and
+                                confident move, every time
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--FUTURE RELEASE-->
+            <h1 id="future"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfmdLzjflLp5Rm0mDXCqQL8M9aPWCaFDfXZWOzH354yjEphjw/viewform" target="_blank">Apply to Be a Beta Tester</a></h1>
+            <div id="future-release">
+                <div class="left">
+                    <ul>
+                        <li><i class="check"></i><span>Marketing Functions</span></li>
+                        <li><i class="check"></i> <span>Business Metrics</span></li>
+                        <li><i class="check"></i> <span>Team Performance</span></li>
+                        <li><i class="check"></i> <span>Operations Management</span></li>
+                    </ul>
+                    <div class="logo-small"></div>
+                </div>
+                <div class="right">
+                    <ul>
+                        <li><i class="check"></i> <span>Communication Tracking</span></li>
+                        <li><i class="check"></i><span>Time Management</span></li>
+                        <li><i class="check"></i> <span>Lease Processes</span></li>
+                        <li><i class="check"></i> <span>Lead Management</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 text-center-sm"><h2>FOLLOW US ON</h2>
+                            <p>
+                                <a href="https://www.linkedin.com/company/my-savvybiz/" target="_blank"><i class="fab fa-linkedin"></i> </a>
+                                <a href="https://plus.google.com/u/0/108541517996759010262" target="_blank"><i class="fab fa-google-plus-square"></i> </a>
+                                <a href="https://www.facebook.com/mysavvybiz" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                                <a href="https://www.instagram.com/mysavvybiz/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a href="https://twitter.com/MySavvyBiz" target="_blank"><i class="fab fa-twitter-square"></i></a>
+{#                                <a href="https://www.linkedin.com/company/my-savvybiz/" target="_blank"><img class="svg socialIcon" src="{% static 'home/assets/images/icons/linkedIn.svg' %}"></a>#}
+{#                                <a href="https://plus.google.com/u/0/108541517996759010262" target="_blank"><img class="svg socialIcon" src="{% static 'home/assets/images/icons/googlePlus.svg' %}"></a>#}
+{#                                <a href="https://www.facebook.com/mysavvybiz" target="_blank"><img class="svg socialIcon" src="{% static 'home/assets/images/icons/faceBook.svg' %}"></a>#}
+{#                                <a href="https://www.instagram.com/mysavvybiz/" target="_blank"><img class="svg socialIcon" src="{% static 'home/assets/images/icons/instagram.svg' %}"></a>#}
+{#                                <a href="https://twitter.com/MySavvyBiz" target="_blank"><img class="svg socialIcon" src="{% static 'home/assets/images/icons/twitter.svg' %}"></a>#}
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-md-4 " style="text-align: center;">
+                            <div class="button-orange"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfmdLzjflLp5Rm0mDXCqQL8M9aPWCaFDfXZWOzH354yjEphjw/viewform" target="_blank">Get Started</a></div>
+                        </div>
+                        <div class="col-xs-12 col-md-4 right">
+                            <p>&copy; {% now 'Y' %} Savvybiz, LLC. All Rights Reserved.</p>
+                            <p>Our <a href="javascript:;">Privacy policy</a></p></div>
+                    </div>
+                </div>
+            </div>
+
+           <style>
+               /*The vidoe Starts*/
+                #videoBox {
+                  border: 1px solid #e2ebf5;
+                  transition: 0.5s;
+                }
+
+                video {
+                  width: 100%;
+                  vertical-align: bottom;
+                }
+
+                #videoBox.in { animation: ac 1s; }
+
+                #videoBox.out {
+                  position: fixed;
+                  bottom: 0;
+                  right: 0;
+                  width: 300px;
+                  z-index: 999;
+                  animation: an 0.5s;
+                }
+               /*The vidoe Ends*/
+           </style>
+
+            <script>
+                /*The vidoe Starts*/
+                var ha = ( $('#videoBox').offset().top + $('#videoBox').height() );
+
+                $(window).scroll(function(){
+                    if ( $(window).scrollTop() > ha + 500 ) {
+                        $('#videoBox').css('bottom','0');
+                    } else if ( $(window).scrollTop() < ha + 200) {
+                        $('#videoBox').removeClass('out').addClass('in');
+                    } else {
+                        $('#videoBox').removeClass('in').addClass('out');
+                        $('#videoBox').css('bottom','-500px');
+                    };
+                });
+                /*The vidoe Ends*/
+
+                // drawfillsvg
+                /**
+                 * Draw Fill SVG
+                 *
+                 * A plugin that simulates a "draw" effect on the stroke of an SVG, fades out
+                 * the stroke, and fades in a fill colour.
+                 *
+                 * Licensed under the MIT license.
+                 * http://www.opensource.org/licenses/mit-license.php
+                 *
+                 * Copyright 2014, Call Me Nick
+                 * http://callmenick.com
+                 */
+
+                (function (window) {
+
+                    'use strict';
+
+                    /**
+                     * Cross browser transition end events
+                     *
+                     * Use modernizr to detect cross browser transition end events. Make sure
+                     * to include Modernizr in your doc and have "Modernizr.prefixed()" checked
+                     * off in the extensibility section.
+                     */
+
+                    var transEndEventNames = {
+                            "WebkitTransition": "webkitTransitionEnd",
+                            "MozTransition": "transitionend",
+                            "OTransition": "oTransitionEnd",
+                            "msTransition": "MSTransitionEnd",
+                            "transition": "transitionend"
+                        },
+                        transEndEventName = transEndEventNames[Modernizr.prefixed('transition')];
+
+                    /**
+                     * Extend obj function
+                     *
+                     */
+
+                    function extend(a, b) {
+                        for (var key in b) {
+                            if (b.hasOwnProperty(key)) {
+                                a[key] = b[key];
+                            }
+                        }
+                        return a;
+                    }
+
+                    /**
+                     * DrawFillSVG constructor
+                     *
+                     */
+
+                    function DrawFillSVG(options) {
+                        this.options = extend({}, this.options);
+                        extend(this.options, options);
+                        this._init();
+                    }
+
+                    /**
+                     * DrawFillSVG options
+                     *
+                     * Available options:
+                     * elementId - the ID of the element to draw
+                     */
+
+                    DrawFillSVG.prototype.options = {
+                        elementId: "svg"
+                    }
+
+                    /**
+                     * DrawFillSVG _init
+                     *
+                     * Initialise DrawFillSVG
+                     */
+
+                    DrawFillSVG.prototype._init = function () {
+                        this.svg = document.getElementById(this.options.elementId);
+                        this.paths = this.svg.querySelectorAll("path");
+                        this._initAnimation();
+                    }
+
+                    /**
+                     * DrawFillSVG _initAnimation()
+                     *
+                     * Reset some style properties on our paths, add some transitions, set the
+                     * stroke-dasharray to the length of the path, and the stroke-dashoffset to
+                     * the length of the path pushing it out of view initially. Then, set the
+                     * stroke-dashoffset to 0, animating the strokes in a drawing manner. Then,
+                     * run the path filler sequence.
+                     */
+
+                    DrawFillSVG.prototype._initAnimation = function () {
+                        for (var i = 0; i < this.paths.length; i++) {
+                            var path = this.paths[i];
+                            var length = path.getTotalLength();
+
+                            // reset opacities
+                            path.style.fillOpacity = 0;
+                            path.style.strokeOpacity = 1;
+
+                            // reset transitions
+                            path.style.transition = path.style.WebkitTransition = "none";
+
+                            // reset stroke dash array and stroke dash offset
+                            path.style.strokeDasharray = length + " " + length;
+                            path.style.strokeDashoffset = length;
+                            path.getBoundingClientRect();
+
+                            // apply new transitions
+                            path.style.transition = path.style.WebkitTransition = "stroke-dashoffset 2s ease-in-out";
+
+                            // go baby go
+                            path.style.strokeDashoffset = 0;
+
+                            // fill the path
+                            this._fillPath(path);
+                        }
+                    }
+
+                    /**
+                     * DrawFillSVG _fillPath()
+                     *
+                     * Resets the transition props, then fills the path and fades out the stroke
+                     * by updating the styles.
+                     */
+
+                    DrawFillSVG.prototype._fillPath = function (path) {
+                        path.addEventListener(transEndEventName, function () {
+                            // reset transitions
+                            path.style.transition = path.style.WebkitTransition = "none";
+                            path.style.transition = path.style.WebkitTransition = "fill-opacity 1s ease-in-out, stroke-opacity 1s ease-in-out";
+
+                            // edit props
+                            path.style.fillOpacity = 1;
+                            path.style.strokeOpacity = 0;
+                        });
+                    }
+
+                    /**
+                     * DrawFillSVG replay
+                     *
+                     * A public function that allows you to replay the animation if you want. For
+                     * example, click a button, and replay the animation.
+                     */
+
+                    DrawFillSVG.prototype.replay = function () {
+                        this._initAnimation();
+                    }
+
+                    /**
+                     * Add to global namespace
+                     */
+
+                    window.DrawFillSVG = DrawFillSVG;
+
+                })(window);
+
+
+                // draw.js
+                var _gsScope = "undefined" != typeof module && module.exports && "undefined" != typeof global ? global : this || window;
+                (_gsScope._gsQueue || (_gsScope._gsQueue = [])).push(function () {
+                    "use strict";
+
+                    function t(t, e, s, i) {
+                        return s = parseFloat(s) - parseFloat(t), i = parseFloat(i) - parseFloat(e), Math.sqrt(s * s + i * i)
+                    }
+
+                    function e(t) {
+                        return "string" != typeof t && t.nodeType || (t = _gsScope.TweenLite.selector(t), t.length && (t = t[0])), t
+                    }
+
+                    function s(t, e, s) {
+                        var i, r, a = t.indexOf(" ");
+                        return -1 === a ? (i = void 0 !== s ? s + "" : t, r = t) : (i = t.substr(0, a), r = t.substr(a + 1)), i = -1 !== i.indexOf("%") ? parseFloat(i) / 100 * e : parseFloat(i), r = -1 !== r.indexOf("%") ? parseFloat(r) / 100 * e : parseFloat(r), i > r ? [r, i] : [i, r]
+                    }
+
+                    function i(s) {
+                        if (!s) return 0;
+                        s = e(s);
+                        var i, r, a, o, h, n, l, f, p = s.tagName.toLowerCase();
+                        if ("path" === p) h = s.style.strokeDasharray, s.style.strokeDasharray = "none", i = s.getTotalLength() || 0, r = s.getBBox(), s.style.strokeDasharray = h; else if ("rect" === p) r = s.getBBox(), i = 2 * (r.width + r.height); else if ("circle" === p) i = 2 * Math.PI * parseFloat(s.getAttribute("r")); else if ("line" === p) i = t(s.getAttribute("x1"), s.getAttribute("y1"), s.getAttribute("x2"), s.getAttribute("y2")); else if ("polyline" === p || "polygon" === p) for (a = s.getAttribute("points").split(" "), i = 0, h = a[0].split(","), "polygon" === p && (a.push(a[0]), -1 === a[0].indexOf(",") && a.push(a[1])), n = 1; n < a.length; n++) o = a[n].split(","), 1 === o.length && (o[1] = a[n++]), 2 === o.length && (i += t(h[0], h[1], o[0], o[1]) || 0, h = o); else "ellipse" === p && (l = parseFloat(s.getAttribute("rx")), f = parseFloat(s.getAttribute("ry")), i = Math.PI * (3 * (l + f) - Math.sqrt((3 * l + f) * (l + 3 * f))));
+                        return i || 0
+                    }
+
+                    function r(t, s) {
+                        if (!t) return [0, 0];
+                        t = e(t), s = s || i(t) + 1;
+                        var r = o(t), a = r.strokeDasharray || "", h = parseFloat(r.strokeDashoffset), n = a.indexOf(",");
+                        return 0 > n && (n = a.indexOf(" ")), a = 0 > n ? s : parseFloat(a.substr(0, n)) || 1e-5, a > s && (a = s), [Math.max(0, -h), Math.max(0, a - h)]
+                    }
+
+                    var a, o = document.defaultView ? document.defaultView.getComputedStyle : function () {
+                    };
+                    a = _gsScope._gsDefine.plugin({
+                        propName: "drawSVG",
+                        API: 2,
+                        version: "0.0.7",
+                        global: !0,
+                        overwriteProps: ["drawSVG"],
+                        init: function (t, e, a) {
+                            if (!t.getBBox) return !1;
+                            var o, h, n, l = i(t) + 1;
+                            return this._style = t.style, e === !0 || "true" === e ? e = "0 100%" : e ? -1 === (e + "").indexOf(" ") && (e = "0 " + e) : e = "0 0", o = r(t, l), h = s(e, l, o[0]), this._length = l + 10, 0 === o[0] && 0 === h[0] ? (n = Math.max(1e-5, h[1] - l), this._dash = l + n, this._offset = l - o[1] + n, this._addTween(this, "_offset", this._offset, l - h[1] + n, "drawSVG")) : (this._dash = o[1] - o[0] || 1e-6, this._offset = -o[0], this._addTween(this, "_dash", this._dash, h[1] - h[0] || 1e-5, "drawSVG"), this._addTween(this, "_offset", this._offset, -h[0], "drawSVG")), !0
+                        },
+                        set: function (t) {
+                            this._firstPT && (this._super.setRatio.call(this, t), this._style.strokeDashoffset = this._offset, 1 === t || 0 === t ? this._style.strokeDasharray = this._offset < .001 && this._length - this._dash <= 10 ? "none" : this._offset === this._dash ? "0px, 999999px" : this._dash + "px," + this._length + "px" : this._style.strokeDasharray = this._dash + "px," + this._length + "px")
+                        }
+                    }), a.getLength = i, a.getPosition = r
+                }), _gsScope._gsDefine && _gsScope._gsQueue.pop()();
+
+                // CircleAnimation
+                var CircleAnimation = (function () {
+                    var BASE_PATH = "{% static 'home/assets/images/circleBar/' %}";
+                    var GRAY_IMAGE = BASE_PATH + "circularBarGray.png";
+                    var CircleAnimation = function (settings) {
+                        this.settings = settings;
+                        this.renderer = PIXI.autoDetectRenderer(217, 217, {antialias: true, 'transparent': true});
+                        $(this.settings.parent).get(0).appendChild(this.renderer.view);
+                        this.percentID = $(this.settings.parent + ">span");
+                        PIXI.Container.call(this);
+                        this.MASK = this.addChild(new PIXI.Graphics());
+                        this.MASK.position.set(this.renderer.width / 2, this.renderer.height / 2)
+                        this.progress = 0;
+                        this.initGraphics();
+                        this.R = this.renderer.width / 2 + 1;
+
+                        this.updateProgress();
+                        this.timeLine = new TimelineMax().fromTo(this, 1, {progress: 0}, {
+                            progress: this.settings.percent / 100,
+                            immediateRender: false,
+                            onUpdate: this.updateProgress.bind(this),
+                        })
+                        this.updateStage();
+                        this.main.mask = this.MASK;
+                    }
+                    CircleAnimation.prototype = Object.create(PIXI.Container.prototype);
+                    CircleAnimation.prototype.updateStage = function () {
+                        this.renderer.render(this);
+                        requestAnimationFrame(this.updateStage.bind(this));
+                    };
+
+                    CircleAnimation.prototype.updateProgress = function () {
+                        var currentDegrees = 2 * Math.PI * this.progress;
+                        var value = this.progress * 100;
+                        this.percentID.html(value.toFixed(0) + "%");
+                        this.MASK
+                            .clear()
+                            .beginFill(0x00FF00, 1)
+                            .moveTo(0, -this.renderer.width / 2)
+                            // .drawRect(0,0,this.renderer.width/2*this.progress,this.renderer.height*this.progress)
+                            .arc(0, 0, this.R, -Math.PI / 2, currentDegrees - Math.PI / 2, false)
+                            .lineTo(0, 0)
+                            .lineTo(0, -this.renderer.width / 2)
+                            .endFill();
+                    };
+
+                    CircleAnimation.prototype.initGraphics = function (first_argument) {
+                        this.bg = this.addChild(PIXI.Sprite.fromImage(GRAY_IMAGE));
+                        this.bg.anchor.set(0.5, 0.5);
+                        this.bg.position.set(this.renderer.width / 2, this.renderer.height / 2);
+
+                        this.main = this.addChild(PIXI.Sprite.fromImage(BASE_PATH + this.settings.image));
+                        this.main.anchor.set(0.5, 0.5);
+                        this.main.position.set(this.renderer.width / 2, this.renderer.height / 2);
+                    };
+
+                    return CircleAnimation;
+                })();
+
+
+                // main.js
+                var getHashTag = function () {
+                    return window.location.hash.substring(1);
+                };
+
+                var STATIC = STATIC || false;
+
+
+                var initScrolling = function () {
+                    // do some thing
+                    $('.circle').click(function () {
+                        $(this).toggleClass('is-active');
+                        $('.nav').toggleClass('show-nav');
+                    });
+                    var KEY_DISTANCES = {
+                        38: -100, //pageup
+                        40: +100, //pagedown
+                        34: +window.innerHeight, //pagedown
+                        33: -window.innerHeight, //pageup
+                    };
+                    $(document).keydown(function (event) {
+                        if (!!KEY_DISTANCES[event.keyCode]) {
+                            event.preventDefault();
+                            TweenMax.to($("html,body"), 1.0, {
+                                overwrite: "none",
+                                scrollTop: "+=" + KEY_DISTANCES[event.keyCode],
+                            });
+
+                        }
+                    });
+                    return false;
+                };
+
+                var main = function () {
+                    initScrolling();
+    //start scrolling controllers
+                    var controller = new ScrollMagic.Controller();
+                    var endPositions, tweensInsideFunnel;
+                    var w = 620;
+                    var h = 620 / 375 * 541;
+
+                    if (window.innerWidth < 620) {//iPhone
+                        $("#MazeWrapper svg").attr("width", "375px").attr("height", "541px").css("margin-top", "-4px");
+                        $("#topAnimationsWrapper").css("height", "1600px");
+                    } else if (window.innerWidth < 1207) {
+                        $("#MazeWrapper svg").attr("width", "" + w + "px").attr("height", "" + h + "px").css("margin-left", "-122px").css("margin-top", "-40px");
+                    } else {
+                        $("#MazeWrapper svg").attr("width", "" + w + "px").attr("height", "" + h + "px").css("margin-left", "-122px").css("margin-top", "40px");
+                    }
+                    if (window.innerWidth < 620) {//iPhone
+                        endPositions = {
+                            left: {x: "28%", y: 966},
+                            right: {x: "38%", y: 966},
+                        };
+                    } else if (window.innerWidth < 1207) {
+                        endPositions = {
+                            left: {x: "38%", y: 966},
+                            right: {x: "42%", y: 966},
+                        };
+                    } else if (window.innerWidth > 1900) {
+                        endPositions = {
+                            left: {x: "45%", y: 1066},
+                            right: {x: "48%", y: 1066},
+                        };
+                    } else {
+                        endPositions = {
+                            left: {x: "38%", y: 1066},
+                            right: {x: "48%", y: 1066},
+                        };
+                    }
+
+                    if (window.innerWidth < 1207) {
+                        TweenMax.set($("#slideHeader"), {height: "611px", "background-position-y": "50px"});
+                        TweenMax.set($("#roadContainer,#roadContainer2"), {"height": "561px", top: "+=50px"})
+                        TweenMax.set($(".funnel"), {"margin-top": "0px"})
+                        TweenMax.set($("h1#funnelTitle"), {"top": "-=100px"})
+                    }
+
+                    tweensInsideFunnel = [
+                        {icon: ".iconShoe.imgHolder", pos: "right", duration: 1.0},//goes out 1st
+                        {icon: ".iconSpeedometer.imgHolder", pos: "right", duration: 1.1},//2nd
+                        {icon: ".iconSun.imgHolder", pos: "right", duration: 1.2},
+                        {icon: ".iconBiker.imgHolder", pos: "right", duration: 1.35},
+                        {icon: ".iconRun.imgHolder", pos: "right", duration: 1.45},
+                        {icon: ".iconHeartbeat.imgHolder", pos: "right", duration: 1.55},
+                        {icon: ".iconWaves.imgHolder", pos: "right", duration: 1.75},
+                        {icon: ".iconPeaks.imgHolder", pos: "right", duration: 1.85},
+                    ].map(function (settings, index) {
+                        var element = $(settings.icon)
+                        var pos = endPositions[settings.pos]
+                        iconTweens = [
+                            TweenMax.to(element, settings.duration, {force3D: true, left: pos.x, ease: Sine.easeOut}),
+                            TweenMax.to(element, settings.duration, {force3D: true, top: pos.y, ease: Sine.easeIn}),
+                        ];
+                        return iconTweens;
+                    }).reduce(function (last, next) {
+                        return last.concat(next);
+                    }, []);
+                    if (window.innerWidth < 1207) {
+                        tweensInsideFunnel.push(TweenMax.to($("#slideHeader"), 1.3, {"background-position-y": "-=50px"}));//paralax of banner
+                    }
+                    var scene = new ScrollMagic.Scene({
+                        triggerElement: "#roadContainer",
+                        duration: 900,// scroll some pixels to complete the animation
+                        triggerHook: "onLeave"
+                    })
+                        .setTween(new TimelineMax().add(tweensInsideFunnel))
+                        .addTo(controller);
+
+                    // FEATUREs paralax
+                    [
+                        {id: "#features .data", startY: "80px", endY: "-78px"},
+                        {id: "#features .achieve", startY: "300px", endY: "-78px"},
+                    ].forEach(function (element, index) {
+                        var tweens = [TweenMax.fromTo($(element.id), 1.0, {
+                            'background-position-y': element.startY,
+                        }, {
+                            'background-position-y': element.endY,
+                            immediateRender: false
+                        })];
+                        if (index === 2) {//add biker and runner animations
+                            tweens = tweens.concat([
+                                TweenMax.to($("#slope-biker"), 1.0, {
+                                    "margin-top": "-=250",
+                                    "margin-left": "+=100",
+                                    immediateRender: false
+                                }),
+                                TweenMax.to($("#slope-runner"), 1.0, {
+                                    "margin-top": "-=250",
+                                    "margin-left": "-=100",
+                                    immediateRender: false
+                                }),
+                            ]);
+                        }
+                        var paralaxScene = new ScrollMagic.Scene({
+                            triggerElement: element.id,
+                            duration: 1000,
+                            triggerHook: "onEnter"
+                        })
+                            .setTween(new TimelineMax().add(tweens))
+                            .addTo(controller);
+                    });
+                    [
+                        {id: "#features .analyze", startY: "125px", endY: "34px"},
+                    ].forEach(function (element, index) {
+                        var tweens = [TweenMax.fromTo(".rotateimg", 1.0, {
+                            'rotation': 0,
+                        }, {
+                            'rotation': -160,
+                            immediateRender: false
+                        })];
+                        if (index === 2) {//add biker and runner animations
+                            tweens = tweens.concat([]);
+                        }
+                        var paralaxScene = new ScrollMagic.Scene({
+                            triggerElement: element.id,
+                            duration: 1000,
+                            triggerHook: "onEnter"
+                        })
+                            .setTween(new TimelineMax().add(tweens))
+                            .addTo(controller);
+                    });
+                    [
+                        // {id:"#MazeWrapper",                     trigger:"#MazeWrapper"   , delay:0.25, tweenTime:0.5, staggerTime:0.3, duration:700},
+                        // signUp button
+                        {
+                            id: "#signup-button",
+                            offset: 0,
+                            trigger: "#signup-button",
+                            delay: 0,
+                            tweenTime: 0.5,
+                            staggerTime: 0,
+                            duration: 700
+                        },
+                        // FUTURE RELEASE FEATUREs paralax
+                        {
+                            id: "#future-release>div.left>ul>li",
+                            offset: 200,
+                            trigger: "#future-release>div.left>ul>li:first-child",
+                            delay: 0.15,
+                            tweenTime: 0.4,
+                            staggerTime: 0.1,
+                            duration: 300
+                        },
+                        {
+                            id: "#future-release>div.right>ul>li",
+                            offset: 200,
+                            trigger: "#future-release>div.right>ul>li:first-child",
+                            delay: 0.15,
+                            tweenTime: 0.4,
+                            staggerTime: 0.1,
+                            duration: 300
+                        },
+                    ].forEach(function (settings, index) {
+                        var paralaxScene = new ScrollMagic.Scene({
+                            triggerElement: settings.trigger,
+                            duration: settings.duration,
+                            offset: settings.offset || 0,
+                            triggerHook: "onEnter"
+                        })
+                            .setTween(new TimelineMax().staggerFromTo(
+                                $(settings.id).get(),
+                                settings.tweenTime,//tween time
+                                {'opacity': 0.0},//from data
+                                {'opacity': 1.0, delay: settings.delay},// to data
+                                settings.staggerTime)//distance between starts,
+                            )
+
+                            .addTo(controller);
+                    });
+
+                    //REQUEST EARLY ACCESS
+                    [
+                        {
+                            id: "#request-access>div:nth-child(1) div.col-xs-12, #request-access>div:nth-child(2) div.col-xs-12",
+                            trigger: "#request-access",
+                            delay: 1,
+                            tweenTime: 1,
+                            staggerTime: 0.25,
+                            duration: 350
+                        },
+                    ].forEach(function (settings, index) {
+                        var self = $(settings.id).get();
+                        var paralaxScene = new ScrollMagic.Scene({
+                            triggerElement: settings.trigger,
+                            duration: settings.duration,
+                            triggerHook: "onEnter"
+                        })
+                            .setTween(new TimelineMax({
+                                    tweens: [
+                                        TweenMax.staggerFromTo(
+                                            self,
+                                            settings.tweenTime,//tween time
+                                            {'opacity': 0.0},//from data
+                                            {'opacity': 1.0, delay: settings.delay},// to data
+                                            settings.staggerTime),//distance between starts,
+                                        TweenMax.fromTo(
+                                            self,
+                                            settings.tweenTime,//tween time
+                                            {'top': 25.0},//from data
+                                            {'top': 0.0, delay: settings.delay * 2},// to data
+                                            settings.staggerTime),//distance between starts,
+                                    ]
+                                })
+                            )
+
+                            .addTo(controller);
+                    });
+
+
+                    //MAZE animations
+
+                    var MAZEscene = new ScrollMagic.Scene({
+                        triggerElement: "#MazeWrapper",
+                        duration: (window.innerWidth < 620) ? 300 : 630, // sliding those number of pixels to complete the MAZE animation
+                        triggerHook: "onEnter",
+                        offset: 150 // wait to pass offset pixel before starting with the SVGdraw
+                    });
+
+                    var timeLine = new TimelineMax()
+                        .set($("g>path"), {drawSVG: "0% 0%"});
+
+                    var sequence = [// if you change the svg config the elements below:
+                        {elem: $("g#_x37_>path"), back: false, debugColor: "pink"},
+                        {elem: $("g#_x38_>path"), back: false, debugColor: "black"},
+                        {elem: $("g#_x35_>path"), back: true, debugColor: "brown"},
+                        {elem: $("g#_x34_>path"), back: true, debugColor: "gray"},
+                        {elem: $("g#_x33_>path"), back: true, debugColor: "purple", delay: 30, time: 120},
+                        {elem: $("g#_x32_>path"), back: true, debugColor: "magenta", delay: 0, time: 40},
+                        {elem: $("g#_x31_>path"), back: false, debugColor: "cyan"},
+                        {elem: $("g#_x31_0>path"), back: false, debugColor: "yellow", delay: 0, time: 45},
+                        {elem: $("g#_x31_2>path"), back: false, debugColor: "red", delay: 55, time: 26},
+                        {elem: $("g#_x31_1>path"), back: false, debugColor: "blue", delay: 65, time: 50},
+                        {elem: $("g#_x39_>path"), back: false, debugColor: "green", delay: 48, time: 50},
+                    ].map(function (cfg) {
+                        var self = cfg.elem;
+
+                        if (cfg.back) {//some lines might be have drawn the reversed direction
+                            return TweenMax.fromTo(self, cfg.time || 150, {drawSVG: "0% 0%"}, {
+                                drawSVG: "0% 100%",
+                                delay: cfg.delay || 0,
+                                immediateRender: false,//prevents from starting the animation until added to TimeLine
+                            }); //back:true
+                        } else {
+                            return TweenMax.fromTo(self, cfg.time || 150, {drawSVG: "100% 100%"}, {
+                                drawSVG: "0% 100%",
+                                delay: cfg.delay || 0,
+                                immediateRender: false,//prevents from starting the animation until added to TimeLine
+                            }); //back:false
+                        }
+                    });
+
+
+                    // THUMBLERS animations
+                    thumblers = [
+                        {delay: 0, rotation: -150, time: 45, index: 1},
+                        {delay: 0, rotation: 60, time: 25, index: 2},
+                        {delay: 0, rotation: 90, time: 55, index: 3},
+                        {delay: 0, rotation: -150, time: 67, index: 4},
+                        {delay: 0, rotation: 170, time: 55, index: 5},
+                        {delay: 0, rotation: -90, time: 29, index: 6},
+                        {delay: 0, rotation: 140, time: 70, index: 7},
+                        {delay: 0, rotation: -70, time: 15, index: 8},
+                    ].map(function (settings) {
+                        var self = $("g#clock" + (settings.index));
+                        return TweenMax.to(self, settings.time, {
+                            rotation: settings.rotation,
+                            transformOrigin: "50% 50%",
+                            delay: settings.delay,
+                            immediateRender: false,//prevents from starting the animation until added to TimeLine
+                            onUpdate: function () {
+                                self.children().attr("stroke", "blue");
+                            },
+                            onComplete: function () {
+                                self.children().attr("stroke", "goldenrod");
+                            }
+                        }); //back:true
+                    });
+
+                    timeLine.add(sequence.concat(thumblers));//.restart();
+
+                    // add LOGO animation
+                    timeLine.add(TweenMax.staggerFromTo($("g#logo1,g#logo2,g#logo3"), 30, {opacity: 1}, {
+                        opacity: 0,
+                        immediateRender: false
+                    }, 30), "-=100");
+                    MAZEscene.setTween(timeLine).addTo(controller);
+                    //end MAZE animations
+
+
+                    // CIRCLE bars EVENT FORECAST
+
+                    [
+                        {parent: "div.red-circle", percent: 78, image: "circularBarRed.png"},
+                        {parent: "div.blue-circle", percent: 100, image: "circularBarBlue.png"},
+                        {parent: "div.green-circle", percent: 90, image: "circularBarGreen.png"},
+
+                    ].forEach(function (settings) {
+                        var scene = new ScrollMagic.Scene({
+                            triggerElement: settings.parent,
+                            duration: 450,
+                            triggerHook: "onEnter",
+                            offset: 150
+                        })
+                            .setTween(new CircleAnimation(settings).timeLine)
+                            .addTo(controller);
+                    });
+                };
+                var loadingFX = function (callback) {
+                    var startElements = $([
+                        "#topTitle",
+                        ".roadiconsDark",
+                        ".roadiconsDark svg",
+                        ".roadicons",
+                        ".roadicons svg"
+                    ].join(", ")).get();
+                    if (!getHashTag()) {
+                        TweenMax.set($("html,body"), {scrollTop: 0});
+                    }
+
+                    var onLoadTL = new TimelineMax({delay: 0.3})
+                        .set($("#roadContainer,#roadContainer2"), {opacity: 1})
+                        .add([
+                            TweenMax.fromTo($("#header").get(), 1.5, {
+                                opacity: 0,
+                                "margin-top": "-=50px",
+                                "margin-bottom": "+=50px"
+                            }, {opacity: 1, "margin-top": "+=50px", "margin-bottom": "-=50px"}),
+                            TweenMax.fromTo(startElements, 1.5, {opacity: 0, top: "-=50px"}, {opacity: 1, top: "+=50px"})
+                        ])
+                        .addCallback(function () {
+                            callback && callback();
+                        });
+
+
+                };
+                $(document).ready(function () {
+                    if (!!STATIC) {
+                        return initScrolling();
+                    }
+                    // scroll animation
+                    var scroll_speed = Math.abs($("#signup,#header").first(0).offset().top -
+                        $('div#signup-button .button-orange>a,#header').offset().top
+                    ) / 1000; // short scroll time
+                    $('a[href^="#"]').on('click', function (event) {
+                        var target = $($(this).attr('href'));
+                        var start_pos = $(this).offset().top;
+                        var target_pos = target.offset().top;
+                        var distance = Math.abs(target_pos - start_pos);
+
+                        if (target.length) {
+                            event.preventDefault();
+                            $('html, body').animate({
+                                    scrollTop: target_pos
+                                }, Math.floor(distance / scroll_speed),
+                                "swing",//easing
+                                function () {//callback
+                                    if (target.selector === "#signup") {
+                                        document.getElementById("signup_name").focus();
+                                    }
+                                });
+                        }
+                    });
+
+                    var $bgobj = $("#slideHeader") // assigning the object
+
+                    $(window).scroll(function () {
+                        var yPos = -($(window).scrollTop() / 3);
+
+                        // Put together our final background position
+                        var coords = '50% ' + yPos + 'px';
+
+                        // Move the background
+                        $bgobj.css({backgroundPosition: coords});
+                    });
+                    if (!getHashTag()) {
+                        $("html,body").animate({scrollTop: "+=1"}, 200);
+                    }
+
+
+                    var imagesToEmbed = jQuery('img.svg');
+                    var afterN = imagesToEmbed.size();
+                    var wrapAfter = function () {
+                        afterN -= 1;
+                        if (!afterN) {
+                            loadingFX(main);
+                        }
+                    };
+                    imagesToEmbed.each(function () {
+                        // <img> with svg source to embedded svgs. http://stackoverflow.com/a/24933495 -->
+
+                        var $img = jQuery(this);
+                        var imgID = $img.attr('id');
+                        var imgClass = $img.attr('class');
+                        var imgURL = $img.attr('src');
+
+                        var settings = {
+                            'cache': false,
+                            "async": true,
+                            "crossDomain": true,
+                            "url": imgURL,
+                            "method": "GET",
+                            "headers": {
+                                "accept": "application/xml",
+                                "Access-Control-Allow-Origin":"*"
+                            }
+                        };
+
+                        $.ajax(settings).done(function (data) {
+                            // Get the SVG tag, ignore the rest
+                            var $svg = jQuery(data).find('svg');
+
+                            // Add replaced image's ID to the new SVG
+                            if (typeof imgID !== 'undefined') {
+                                $svg = $svg.attr('id', imgID);
+                            }
+                            // Add replaced image's classes to the new SVG
+                            if (typeof imgClass !== 'undefined') {
+                                $svg = $svg.attr('class', imgClass + ' replaced-svg');
+                            }
+
+                            // Remove any invalid XML tags as per http://validator.w3.org
+                            $svg = $svg.removeAttr('xmlns:a');
+
+                            // Check if the viewport is set, if the viewport is not set the SVG wont't scale.
+                            if (!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
+                                $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
+                            }
+
+                            // Replace image with new SVG
+                            $img.replaceWith($svg);
+
+
+                            wrapAfter();
+                        });
+                    });
+                });
+            </script>
+
+
+        </div>
+    </div><!-- /.landing -->
+</div>
+
+</body>
+</html>
