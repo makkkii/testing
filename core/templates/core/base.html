@@ -1,6 +1,8 @@
 {% load static %}
+{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Admin Dashboard HTML Template</title>
     <meta charset="utf-8">
@@ -12,16 +14,17 @@
     <link href="{% static 'favicon.png' %}' %}" rel="shortcut icon">
     <link href="{% static 'apple-touch-icon.png' %}" rel="apple-touch-icon">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet" type="text/css">
-{#    <link href="{% static 'select2/dist/css/select2.min.css' %}" rel="stylesheet">#}
-{#    <link href="{% static 'bootstrap-daterangepicker/daterangepicker.css' %}" rel="stylesheet">#}
-{#    <link href="{% static 'dropzone/dist/dropzone.css' %}" rel="stylesheet">#}
-{#    <link href="{% static 'datatables.net-bs/css/dataTables.bootstrap.min.css' %}" rel="stylesheet">#}
-{#    <link href="{% static 'fullcalendar/dist/fullcalendar.min.css' %}" rel="stylesheet">#}
+    {#    <link href="{% static 'select2/dist/css/select2.min.css' %}" rel="stylesheet">#}
+    {#    <link href="{% static 'bootstrap-daterangepicker/daterangepicker.css' %}" rel="stylesheet">#}
+    {#    <link href="{% static 'dropzone/dist/dropzone.css' %}" rel="stylesheet">#}
+    {#    <link href="{% static 'datatables.net-bs/css/dataTables.bootstrap.min.css' %}" rel="stylesheet">#}
+    {#    <link href="{% static 'fullcalendar/dist/fullcalendar.min.css' %}" rel="stylesheet">#}
     <link href="{% static 'perfect-scrollbar/css/perfect-scrollbar.min.css' %}" rel="stylesheet">
-{#    <link href="{% static 'slick-carousel/slick/slick.css' %}" rel="stylesheet">#}
+    {#    <link href="{% static 'slick-carousel/slick/slick.css' %}" rel="stylesheet">#}
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
     <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
 </head>
+
 <body class="menu-position-side menu-side-left full-screen with-content-panel">
 
     <div class="all-wrapper with-side-panel solid-bg-all">
@@ -31,13 +34,18 @@
             -------------------->
             <div class="menu-mobile menu-activated-on-click color-scheme-dark">
                 <div class="mm-logo-buttons-w">
-                    <a class="mm-logo" href="index.html"><img src="{% static 'img/logo.png' %}"><span>SavvyBiz Test</span></a>
+                    <a class="mm-logo" href="index.html"><img src="{% static 'img/logo.png' %}"><span>SavvyBiz
+                            Test</span></a>
                     <div class="mm-buttons">
                         <div class="mobile-menu-trigger">
                             {% if request.user.is_authenticated %}
-                                <a href="{% url 'logout' %}" title="Logout from your account" data-toggle="tooltip"><div class="os-icon os-icon-user-male-circle"></div></a>
+                            <a href="{% url 'logout' %}" title="Logout from your account" data-toggle="tooltip">
+                                <div class="os-icon os-icon-user-male-circle"></div>
+                            </a>
                             {% else %}
-                                <a href="{% url 'login' %}" title="Login to your account" data-toggle="tooltip"><div class="os-icon os-icon-signs-11"></div></a>
+                            <a href="{% url 'login' %}" title="Login to your account" data-toggle="tooltip">
+                                <div class="os-icon os-icon-signs-11"></div>
+                            </a>
                             {% endif %}
                         </div>
                     </div>
@@ -50,7 +58,8 @@
             <!--------------------
             START - Main Menu
             -------------------->
-            <div class="menu-w color-scheme-light color-style-transparent menu-position-side menu-side-left menu-layout-compact sub-menu-style-over sub-menu-color-bright selected-menu-color-light menu-activated-on-hover menu-has-selected-link">
+            <div
+                class="menu-w color-scheme-light color-style-transparent menu-position-side menu-side-left menu-layout-compact sub-menu-style-over sub-menu-color-bright selected-menu-color-light menu-activated-on-hover menu-has-selected-link">
                 <div class="logo-w">
                     <a class="logo" href="index.html">
                         <div class="logo-element"></div>
@@ -62,21 +71,22 @@
                 <div class="logged-user-w avatar-inline">
                     <div class="logged-user-i">
                         <div class="avatar-w">
-                            <img src="{% if request.is_authenticated %}{% static 'img/company3.png' %}{% else %}{% static 'img/avatar1.jpg' %}{% endif %}" alt="" >
+                            <img src="{% if request.is_authenticated %}{% static 'img/company3.png' %}{% else %}{% static 'img/avatar1.jpg' %}{% endif %}"
+                                alt="">
                         </div>
                         <div class="logged-user-info-w">
                             <div class="logged-user-name">
                                 {% if request.user.first_name or request.user.last_name %}
-                                    {{ request.user.first_name }} {{ request.user.last_name }}
+                                {{ request.user.first_name }} {{ request.user.last_name }}
                                 {% else %}
-                                    {{ request.user }}
+                                {{ request.user }}
                                 {% endif %}
                             </div>
                             <div class="logged-user-role">
                                 {% if request.user.is_staff %}
-                                    Adminstrator
+                                Adminstrator
                                 {% else %}
-                                    User
+                                User
                                 {% endif %}
                             </div>
                         </div>
@@ -154,30 +164,33 @@
         </div>
         <div class="display-type"></div>
     </div>
-<script src="{% static 'popper.js/dist/umd/popper.min.js' %}"></script>
-{#<script src="{% static 'select2/dist/js/select2.full.min.js' %}"></script>#}
-{#<script src="{% static 'jquery-bar-rating/dist/jquery.barrating.min.js' %}"></script>#}
-{#<script src="{% static 'bootstrap-validator/dist/validator.min.js' %}"></script>#}
-{#<script src="{% static 'bootstrap-daterangepicker/daterangepicker.js' %}"></script>#}
-{#<script src="{% static 'ion.rangeSlider/js/ion.rangeSlider.min.js' %}"></script>#}
-{#<script src="{% static 'dropzone/dist/dropzone.js' %}"></script>#}
-{#<script src="{% static 'editable-table/mindmup-editabletable.js' %}"></script>#}
-{#<script src="{% static 'datatables.net/js/jquery.dataTables.min.js' %}"></script>#}
-{#<script src="{% static 'datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>#}
-<script src="{% static 'perfect-scrollbar/js/perfect-scrollbar.jquery.min.js' %}"></script>
-{#<script src="{% static 'tether/dist/js/tether.min.js' %}"></script>#}
-{#<script src="{% static 'slick-carousel/slick/slick.min.js' %}"></script>#}
-<script src="{% static 'bootstrap/js/dist/util.js' %}"></script>
-<script src="{% static 'bootstrap/js/dist/alert.js' %}"></script>
-<script src="{% static 'bootstrap/js/dist/button.js' %}"></script>
-<script src="{% static 'bootstrap/js/dist/carousel.js' %}"></script>
-<script src="{% static 'bootstrap/js/dist/collapse.js' %}"></script>
-<script src="{% static 'bootstrap/js/dist/dropdown.js' %}"></script>
-<script src="{% static 'bootstrap/js/dist/modal.js' %}"></script>
-<script src="{% static 'bootstrap/js/dist/tab.js' %}"></script>
-<script src="{% static 'bootstrap/js/dist/tooltip.js' %}"></script>
-<script src="{% static 'bootstrap/js/dist/popover.js' %}"></script>
-{#<script src="{% static 'js/demo_customizer.js' %}"></script>#}
-{#<script src="{% static 'js/main.js' %}"></script>#}
+    <script src="{% static 'popper.js/dist/umd/popper.min.js' %}"></script>
+    {#<script src="{% static 'select2/dist/js/select2.full.min.js' %}"></script>#}
+    {#<script src="{% static 'jquery-bar-rating/dist/jquery.barrating.min.js' %}"></script>#}
+    {#<script src="{% static 'bootstrap-validator/dist/validator.min.js' %}"></script>#}
+    {#<script src="{% static 'bootstrap-daterangepicker/daterangepicker.js' %}"></script>#}
+    {#<script src="{% static 'ion.rangeSlider/js/ion.rangeSlider.min.js' %}"></script>#}
+    {#<script src="{% static 'dropzone/dist/dropzone.js' %}"></script>#}
+    {#<script src="{% static 'editable-table/mindmup-editabletable.js' %}"></script>#}
+    {#<script src="{% static 'datatables.net/js/jquery.dataTables.min.js' %}"></script>#}
+    {#<script src="{% static 'datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>#}
+    <script src="{% static 'perfect-scrollbar/js/perfect-scrollbar.jquery.min.js' %}"></script>
+    {#<script src="{% static 'tether/dist/js/tether.min.js' %}"></script>#}
+    {#<script src="{% static 'slick-carousel/slick/slick.min.js' %}"></script>#}
+    <script src="{% static 'bootstrap/js/dist/util.js' %}"></script>
+    <script src="{% static 'bootstrap/js/dist/alert.js' %}"></script>
+    <script src="{% static 'bootstrap/js/dist/button.js' %}"></script>
+    <script src="{% static 'bootstrap/js/dist/carousel.js' %}"></script>
+    <script src="{% static 'bootstrap/js/dist/collapse.js' %}"></script>
+    <script src="{% static 'bootstrap/js/dist/dropdown.js' %}"></script>
+    <script src="{% static 'bootstrap/js/dist/modal.js' %}"></script>
+    <script src="{% static 'bootstrap/js/dist/tab.js' %}"></script>
+    <script src="{% static 'bootstrap/js/dist/tooltip.js' %}"></script>
+    <script src="{% static 'bootstrap/js/dist/popover.js' %}"></script>
+    {#<script src="{% static 'js/demo_customizer.js' %}"></script>#}
+    {#<script src="{% static 'js/main.js' %}"></script>#}
+
+    {% render_bundle 'main' %}
 </body>
+
 </html>
