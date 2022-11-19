@@ -21,7 +21,7 @@
     "connect-history-api-fallback": "^1.6.0",
     "webpack": "^4.39.1",
     "webpack-bundle-tracker": "^0.4.2-beta",
-    "webpack-cli": "^3.3.6",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3.7.0"
   },
   "scripts": {
